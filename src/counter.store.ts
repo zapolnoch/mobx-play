@@ -1,4 +1,5 @@
-import { makeAutoObservable } from "mobx"
+import { makeAutoObservable, runInAction } from "mobx"
+const delay = (ms: number) => new Promise((_) => setTimeout(_, ms))
 
 class Store {
   constructor() {
@@ -7,16 +8,20 @@ class Store {
 
   count = 0
 
-  inc = () => {
-    this.count++
+  inc = async () => {
+    await delay(10)
+    runInAction(() => {
+      this.count++
+      this.count++
+      this.count++
+    })
   }
 
-  dec = () => {
-    this.count++
-  }
-
-  get double() {
-    return this.count * 2
+  dec = async () => {
+    await delay(10)
+    this.count--
+    this.count--
+    this.count--
   }
 }
 

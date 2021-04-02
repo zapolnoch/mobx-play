@@ -1,7 +1,7 @@
 import { observer } from "mobx-react"
 import { counterStore } from "./counter.store"
 
-const App = observer(() => {
+const App = () => {
   const { count, inc, dec } = counterStore
 
   return (
@@ -12,6 +12,6 @@ const App = observer(() => {
       <button onClick={dec}>-</button>
     </div>
   )
-})
+}
 
-export default App
+export default observer(App)
