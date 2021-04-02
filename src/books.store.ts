@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx"
-import { searchBook } from "./api"
+import api from "./api"
 import type { Book } from "./api/types"
 
 class Store {
@@ -10,11 +10,11 @@ class Store {
   isLoading = false
   books: Book[] = []
 
-  search = async (q: string) => {
+  search = async (query: string) => {
     try {
       this.isLoading = true
-      const result = await searchBook(q)
-      if (!result) return alert("Server error")
+      const result = await api.searchBook(query)
+      if (result === null) return alert("Server error")
 
       this.books = result.filter((item) => item.cover)
     } catch (error) {

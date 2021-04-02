@@ -8,9 +8,10 @@ async function searchBook(q: string): Books {
   try {
     const { data } = await axios({ url, params: { q } })
 
-    return data.docs.map(({ title, author_name, cover_i }: any) => ({
+    return data.docs.map(({ key, title, author_name, cover_i }: any) => ({
+      key,
       title,
-      author: author_name?.toString(),
+      author: author_name?.join(", "),
       cover: cover_i,
     }))
   } catch (error) {
@@ -19,4 +20,6 @@ async function searchBook(q: string): Books {
   }
 }
 
-export { searchBook }
+export default { searchBook }
+
+//** @see https://openlibrary.org/dev/docs/api/search */

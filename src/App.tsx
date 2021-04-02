@@ -1,6 +1,7 @@
 import { observer } from "mobx-react"
 import { Input, Spin } from "./components"
 import { booksStore } from "./books.store"
+import "./style.css"
 
 const App = () => {
   const { isLoading, search, books } = booksStore
@@ -11,18 +12,20 @@ const App = () => {
 
       <Spin isLoading={isLoading} />
 
-      {books.map(({ cover, title }) => (
-        <div key={cover}>
+      {books.map(({ key, cover, title, author }) => (
+        <div key={key}>
           <img
             src={`https://covers.openlibrary.org/b/id/${cover}-M.jpg`}
+            className="cover"
             alt=""
-            style={{
-              height: "100px",
-              maxHeight: "100px",
-            }}
           />
 
-          <div>{title}</div>
+          <div>
+            {title}
+            <br />
+            <i>{author}</i>
+          </div>
+
           <hr />
         </div>
       ))}
