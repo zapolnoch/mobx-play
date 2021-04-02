@@ -1,7 +1,17 @@
-export default function App() {
+import { observer } from "mobx-react"
+import { counterStore } from "./counter.store"
+
+const App = observer(() => {
+  const { count, inc, dec } = counterStore
+
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      <h1>{count}</h1>
+
+      <button onClick={inc}>+</button>
+      <button onClick={dec}>-</button>
     </div>
-  );
-}
+  )
+})
+
+export default App

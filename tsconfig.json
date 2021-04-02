@@ -5,6 +5,9 @@
     "compilerOptions": {
         "strict": true,
         "esModuleInterop": true,
+        "target": "ESNext",
+        "moduleResolution": "Node",
+        "experimentalDecorators": true,
         "lib": [
             "dom",
             "es2015"
