@@ -1,15 +1,31 @@
 import { observer } from "mobx-react"
-import { counterStore } from "./counter.store"
+import { Input, Spin } from "./components"
+import { booksStore } from "./books.store"
 
 const App = () => {
-  const { count, inc, dec } = counterStore
+  const { isLoading, search, books } = booksStore
 
   return (
-    <div className="App">
-      <h1>{count}</h1>
+    <div>
+      <Input isLoading={isLoading} onSearch={search} />
 
-      <button onClick={inc}>+</button>
-      <button onClick={dec}>-</button>
+      <Spin isLoading={isLoading} />
+
+      {books.map(({ cover, title }) => (
+        <div key={cover}>
+          <img
+            src={`https://covers.openlibrary.org/b/id/${cover}-M.jpg`}
+            alt=""
+            style={{
+              height: "100px",
+              maxHeight: "100px",
+            }}
+          />
+
+          <div>{title}</div>
+          <hr />
+        </div>
+      ))}
     </div>
   )
 }
