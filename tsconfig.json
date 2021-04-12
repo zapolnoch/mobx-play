@@ -1,17 +1,26 @@
 {
-    "include": [
-        "./src/**/*"
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2015"
     ],
-    "compilerOptions": {
-        "strict": true,
-        "esModuleInterop": true,
-        "target": "ESNext",
-        "moduleResolution": "Node",
-        "experimentalDecorators": true,
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "jsx": "react-jsx"
-    }
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  }
 }
