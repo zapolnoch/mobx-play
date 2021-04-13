@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 type Props = {
-  isLoading: boolean
+  isLoading: boolean,
   onSearch: Function
 }
 
