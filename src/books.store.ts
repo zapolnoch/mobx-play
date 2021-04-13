@@ -16,8 +16,7 @@ class Store {
       const result = await api.searchBook(query)
       if (result === null) return alert("Server error")
 
-      this.books = result.filter((item) => item.cover)
-    } catch (error) {
+      this.books = result
     } finally {
       this.isLoading = false
     }
