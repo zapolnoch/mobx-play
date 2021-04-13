@@ -14,10 +14,6 @@ class Store {
   dec = () => {
     this.count--
   }
-
-  get double() {
-    return this.count * 2
-  }
 }
 
 export const counterStore = new Store()

@@ -2,19 +2,14 @@ import { observer } from "mobx-react"
 import { counterStore } from "./counter.store"
 
 const App = observer(() => {
+  const { count, inc, dec } = counterStore
+
   return (
     <div className="App">
-      <h1>{counterStore.count}</h1>
-      <h2>{counterStore.double}</h2>
+      <h1>{count}</h1>
 
-      <button
-        onClick={() => {
-          counterStore.count = 10
-        }}
-      >
-        +
-      </button>
-      <button onClick={counterStore.dec}>-</button>
+      <button onClick={inc}>+</button>
+      <button onClick={dec}>-</button>
     </div>
   )
 })
