@@ -2,7 +2,14 @@ import { observer } from "mobx-react"
 import { booksStore } from "./store"
 
 const Search = () => {
-  const { isLoading, query, setQuery, searchingbyAuthor, setSearchingbyAuthor, onSearch } = booksStore
+  const {
+    isLoading,
+    query,
+    setQuery,
+    searchingbyAuthor,
+    setSearchingbyAuthor,
+    onSearch,
+  } = booksStore
 
   return (
     <>
@@ -11,7 +18,7 @@ const Search = () => {
         value={query}
         disabled={isLoading}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => (e.key === "Enter" ? onSearch(query) : null)}
+        onKeyDown={(e) => (e.key === "Enter" ? onSearch() : undefined)}
       />
 
       <input
