@@ -1,6 +1,6 @@
 import { render } from "react-dom"
 import { configure } from "mobx"
-import App from "./App"
+import App from "./pages/books"
 
 setTimeout(() =>
   configure({

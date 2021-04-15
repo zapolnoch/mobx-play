@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
-import api from "./api"
-import type { Book } from "./api/types"
+import api from "../../api"
+import type { Book } from "../../api/types"
 
 class Store {
   constructor() {
@@ -8,12 +8,22 @@ class Store {
   }
 
   isLoading = false
+  searchingbyAuthor = false
+  query = ''
   books: Book[] = []
 
-  search = async (query: string) => {
+  setSearchingbyAuthor = (value: boolean) => {
+    this.searchingbyAuthor = value
+  }
+
+  setQuery = (value: string) => {
+    this.query = value
+  }
+
+  onSearch = async (query: string) => {
     try {
       this.isLoading = true
-      const result = await api.searchBook(query)
+      const result = await api.searchBook(query, this.searchingbyAuthor)
       if (result === null) return alert("Server error")
 
       this.books = result

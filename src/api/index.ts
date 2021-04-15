@@ -4,9 +4,11 @@ const url = "https://openlibrary.org/search.json"
 
 type Books = Promise<Book[] | null>
 
-async function searchBook(q: string): Books {
+async function searchBook(q: string, searchingbyAuthor: boolean): Books {
+  const params = searchingbyAuthor ? { author: q } : { q }
+
   try {
-    const { data } = await axios({ url, params: { q } })
+    const { data } = await axios({ url, params })
 
     return data.docs.map(({ key, title, author_name, cover_i }: any) => ({
       key,
