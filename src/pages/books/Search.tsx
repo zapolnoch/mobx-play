@@ -7,7 +7,6 @@ const Search = () => {
     query,
     setQuery,
     searchingbyAuthor,
-    setSearchingbyAuthor,
     onSearch,
   } = booksStore
 
@@ -24,8 +23,8 @@ const Search = () => {
       <input
         id="searchingbyAuthor"
         type="checkbox"
-        checked={searchingbyAuthor}
-        onChange={(e) => setSearchingbyAuthor(e.target.checked)}
+        checked={searchingbyAuthor.value}
+        onChange={searchingbyAuthor.toggle}
       />
       <label htmlFor="searchingbyAuthor">Searching by author</label>
     </>
