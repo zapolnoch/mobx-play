@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
 
-export class WithBooleanFlag {
+export class BooleanFlag {
   constructor(initialFlag = false) {
     makeAutoObservable(this)
     this.value = initialFlag
