@@ -1,15 +1,15 @@
 import { makeAutoObservable } from "mobx"
 import api from "../../api"
 import type { Book } from "../../api/types"
-import { WithBooleanFlag } from "../../core/WithBooleanFlag"
+import { BooleanFlag } from "../../core/BooleanFlag"
 
-class Store {
+export class BookStore {
   constructor() {
     makeAutoObservable(this)
   }
 
   isLoading = false
-  searchingbyAuthor = new WithBooleanFlag()
+  searchingByAuthor = new BooleanFlag()
   query = ""
   books: Book[] = []
 
@@ -22,7 +22,7 @@ class Store {
       this.isLoading = true
       const result = await api.searchBook(
         this.query,
-        this.searchingbyAuthor.value,
+        this.searchingByAuthor.value,
       )
       if (result === null) return alert("Server error")
 
@@ -32,6 +32,3 @@ class Store {
     }
   }
 }
-
-const booksStore = new Store()
-export { booksStore }

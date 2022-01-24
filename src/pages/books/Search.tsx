@@ -1,33 +1,36 @@
 import { observer } from "mobx-react"
-import { booksStore } from "./store"
+import { useStore } from "./stores-context"
 
 const Search = () => {
+  const { bookStore } = useStore()
   const {
     isLoading,
     query,
     setQuery,
-    searchingbyAuthor,
+    searchingByAuthor,
     onSearch,
-  } = booksStore
+  } = bookStore
 
   return (
-    <>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      onSearch()
+    }}>
       <input
         placeholder="Search"
         value={query}
         disabled={isLoading}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => (e.key === "Enter" ? onSearch() : undefined)}
       />
 
       <input
         id="searchingbyAuthor"
         type="checkbox"
-        checked={searchingbyAuthor.value}
-        onChange={searchingbyAuthor.toggle}
+        checked={searchingByAuthor.value}
+        onChange={searchingByAuthor.toggle}
       />
       <label htmlFor="searchingbyAuthor">Searching by author</label>
-    </>
+    </form>
   )
 }
 

@@ -1,11 +1,12 @@
 import { observer } from "mobx-react"
 import { Spin } from "../../components/Spin"
 import Search from "./Search"
-import { booksStore } from "./store"
 import "./style.css"
+import { useStore } from "./stores-context"
 
 const App = () => {
-  const { isLoading, books } = booksStore
+  const { bookStore } = useStore()
+  const { isLoading, books } = bookStore
 
   return (
     <div>

@@ -1,6 +1,7 @@
 import { render } from "react-dom"
 import { configure } from "mobx"
 import App from "./pages/books"
+import { StoresContextProvider } from "./pages/books/stores-context"
 
 setTimeout(() =>
   configure({
@@ -10,4 +11,4 @@ setTimeout(() =>
 )
 
 const rootElement = document.getElementById("root")
-render(<App />, rootElement)
+render(<StoresContextProvider><App /></StoresContextProvider>, rootElement)
